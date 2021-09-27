@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="palette">
+        <button>Generate New</button>
+        <div class="colors">
+            <div>
+                <h4 class="hex">#1234</h4>
+                <div class="color"></div>
+            </div>
+            <div>
+                <h4 class="hex">#1234</h4>
+                <div class="color"></div>
+            </div>
+            <div>
+                <h4 class="hex">#1234</h4>
+                <div class="color"></div>
+            </div>
+            <div>
+                <h4 class="hex">#1234</h4>
+                <div class="color"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const btn = document.querySelector('button');
+const color = document.querySelectorAll('.color');
+const hex = document.querySelectorAll('.hex');
+
+//Add a click event on the button
+
+btn.addEventListener('click', generateColors);
+
+function generateColors() {
+    for (let i = 0; i < color.length; i++) {
+        console.log(color)
+        //Generate random color
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        //Add the color ass the background
+        color[i].style.background = "#" + randomColor;
+       
+        //Add the animation
+        color[i].classList.add('fade-in');
+        setTimeout(() => color[i].classList.remove('fade-in'), 400);
+        //Add the hex code above the color
+        hex[i].innerHTML = randomColor;
+    }
+
+}
+
+// Generate palette on page load
+
+generateColors();
+console.log('say ')
+    </script>
+</body>
+</html>
